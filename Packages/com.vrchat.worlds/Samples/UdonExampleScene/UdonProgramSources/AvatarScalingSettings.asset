@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: AvatarScalingSettings
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: cc905ff5506d3c94d9af81a23e9b1f2d, type: 2}
+  serializedUdonProgramAsset: {fileID: 11400000, guid: a994467286dbc8b4d89fae793f3fc24f, type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export disableAvatarScaling\r\n    .export
     minimumHeight\r\n    .export maximumHeight\r\n    .export alwaysEnforceHeight\r\n   
     \r\n    __object_0: %SystemObject, null\r\n    __result_0: %SystemBoolean, null\r\n   

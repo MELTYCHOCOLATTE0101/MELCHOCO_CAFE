@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: SyncValueTypesSmooth
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: cf356cf5da540a14faff9f4e2d448ec3, type: 2}
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 020cd16b2a12ad945b08ee29feb6b381, type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export uiText\r\n    .sync boolValue, smooth\r\n   
     .sync intValue, smooth\r\n    .sync floatValue, smooth\r\n    .sync stringValue,
     smooth\r\n    .sync colorValue, smooth\r\n    .sync vector3Value, smooth\r\n   

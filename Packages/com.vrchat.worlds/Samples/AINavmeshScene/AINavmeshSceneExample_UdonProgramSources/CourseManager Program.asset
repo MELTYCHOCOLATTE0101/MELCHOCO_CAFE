@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: CourseManager Program
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 953d5d7fba1ebb74d8fae5a4ab579304, type: 2}
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 6a203964f0f9cca48afef2c52130dca6, type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export steps\r\n    .export npcs\r\n   
     .export surface\r\n    .export resetButton\r\n    .export particles\r\n    .export
     progressImage\r\n    .export progressCheckInterval\r\n    .export targetTransform\r\n   
