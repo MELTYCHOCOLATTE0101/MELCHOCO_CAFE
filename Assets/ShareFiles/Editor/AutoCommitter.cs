@@ -130,29 +130,55 @@ public class AutoCommitter : EditorWindow
             UnityEngine.Debug.LogWarning("gitリポジトリが見つからなかったのでdiff取得できなかったよ～");
             return "";
         }
+
         ProcessStartInfo startInfo = new ProcessStartInfo()
         {
             FileName = "git",
-            Arguments = "diff",
+            Arguments = "diff --unified=0",
             WorkingDirectory = repoPath,
             RedirectStandardOutput = true,
             UseShellExecute = false,
             CreateNoWindow = true
         };
+
         Process process = new Process() { StartInfo = startInfo };
         process.Start();
-        string gitDiff = process.StandardOutput.ReadToEnd();
+        string output = process.StandardOutput.ReadToEnd();
         process.WaitForExit();
-        if (!string.IsNullOrEmpty(gitDiff))
+
+        var sb = new StringBuilder();
+        string currentFile = "";
+
+        foreach (var line in output.Split('\n'))
         {
-            UnityEngine.Debug.Log("Git Diff:\n" + gitDiff);
+            if (line.StartsWith("diff --git"))
+            {
+                var parts = line.Split(' ');
+                if (parts.Length > 2)
+                    currentFile = parts[2].Replace("a/", "");
+                sb.AppendLine($"\n# {currentFile}"); // ファイル名は見出しっぽく残す
+            }
+            else if (line.StartsWith("+++ "))
+            {
+                string filePath = line.Replace("+++ b/", "").Trim();
+                sb.AppendLine($"+ {filePath}");
+            }
+            else if (line.StartsWith("--- "))
+            {
+                string filePath = line.Replace("--- a/", "").Trim();
+                sb.AppendLine($"- {filePath}");
+            }
+            else if (line.StartsWith("+") || line.StartsWith("-"))
+            {
+                if (!line.StartsWith("+++") && !line.StartsWith("---"))
+                    sb.AppendLine(line.Trim());
+            }
         }
-        else
-        {
-            UnityEngine.Debug.LogWarning("No changes detected.");
-        }
-        return gitDiff;
+
+        return sb.ToString().Trim();
     }
+
+
 
     public static async void CommitChanges(string[] modifiedFiles)
     {
